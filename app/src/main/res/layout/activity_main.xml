@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.bhyte.todoister.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        <!--android:theme="@style/Theme.TheDoist.AppBarOverlay"-->
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Todoister.AppBarOverlay">
 
 
         <androidx.appcompat.widget.Toolbar
@@ -17,8 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.Todoister.PopupOverlay"
          />
-        <!-- app:popupTheme="@style/Theme.TheDoist.PopupOverlay" -->
+
 
  </com.google.android.material.appbar.AppBarLayout>
 
@@ -37,7 +38,9 @@
      android:layout_width="match_parent"
      android:layout_height="match_parent"
      android:layout_marginTop="@dimen/dimen_60"
-     android:padding="@dimen/recycler_padding"
+     android:paddingStart="6dp"
+     android:paddingEnd="6dp"
+     android:paddingBottom="@dimen/recycler_padding"
      android:visibility="visible">
 
  </androidx.recyclerview.widget.RecyclerView>
