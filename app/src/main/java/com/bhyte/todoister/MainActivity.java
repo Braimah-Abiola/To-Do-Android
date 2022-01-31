@@ -2,20 +2,35 @@ package com.bhyte.todoister;
 
 import android.os.Bundle;
 
+import com.bhyte.todoister.adapter.RecyclerViewAdapter;
+import com.bhyte.todoister.model.Priority;
+import com.bhyte.todoister.model.Task;
+import com.bhyte.todoister.model.TaskViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.Calendar;
+
 import bhyte.todoister.R;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "ITEM";
+    private TaskViewModel taskViewModel;
+    private RecyclerView recyclerView;
+    private RecyclerViewAdapter recyclerViewAdapter;
+    private int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +38,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        counter = 0;
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        taskViewModel = new ViewModelProvider.AndroidViewModelFactory(
+                MainActivity.this.getApplication())
+                .create(TaskViewModel.class);
+
+        taskViewModel.getAllTasks().observe(this, tasks -> {
+           recyclerViewAdapter = new RecyclerViewAdapter(tasks);
+           recyclerView.setAdapter(recyclerViewAdapter);
+        });
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
+        fab.setOnClickListener(view -> {
+            Task task = new Task("Task " + counter++, Priority.MEDIUM, Calendar.getInstance().getTime(),
+                    Calendar.getInstance().getTime(), false);
+
+            TaskViewModel.insert(task);
+
         });
     }
 
