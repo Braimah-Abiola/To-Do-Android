@@ -1,4 +1,4 @@
-package com.bhyte.todoister.Data;
+package com.bhyte.todoister.data;
 
 import android.app.Application;
 

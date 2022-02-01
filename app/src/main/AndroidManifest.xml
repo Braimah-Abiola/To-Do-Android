@@ -11,14 +11,18 @@
         android:theme="@style/Theme.Todoister">
         <activity
             android:name="com.bhyte.todoister.MainActivity"
+            android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Todoister.NoActionBar"
-            android:exported="true">
+            android:theme="@style/Theme.Todoister.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.Todoister.NoActionBar"
+            android:name="com.bhyte.todoister.AboutActivity">
         </activity>
     </application>
 

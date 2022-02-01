@@ -1,14 +1,10 @@
 package com.bhyte.todoister;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.bhyte.todoister.adapter.RecyclerViewAdapter;
-import com.bhyte.todoister.model.Priority;
-import com.bhyte.todoister.model.Task;
-import com.bhyte.todoister.model.TaskViewModel;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,23 +13,24 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.View;
-
-import android.view.Menu;
-import android.view.MenuItem;
-
-import java.util.Calendar;
+import com.bhyte.todoister.adapter.OnTodoClickListener;
+import com.bhyte.todoister.adapter.RecyclerViewAdapter;
+import com.bhyte.todoister.model.SharedViewModel;
+import com.bhyte.todoister.model.Task;
+import com.bhyte.todoister.model.TaskViewModel;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import bhyte.todoister.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnTodoClickListener {
     private static final String TAG = "ITEM";
     private TaskViewModel taskViewModel;
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
     private int counter;
     BottomSheetFragment bottomSheetFragment;
+    private SharedViewModel sharedViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +53,22 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.getApplication())
                 .create(TaskViewModel.class);
 
+        sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
+
+
         taskViewModel.getAllTasks().observe(this, tasks -> {
-           recyclerViewAdapter = new RecyclerViewAdapter(tasks);
+           recyclerViewAdapter = new RecyclerViewAdapter(tasks, this);
            recyclerView.setAdapter(recyclerViewAdapter);
         });
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> {/*
+        fab.setOnClickListener(view -> {
+            /*
             Task task = new Task("Task " + counter++, Priority.MEDIUM, Calendar.getInstance().getTime(),
                     Calendar.getInstance().getTime(), false);
 
-            TaskViewModel.insert(task);*/
+            TaskViewModel.insert(task);
+            */
             showBottomSheetDialog();
 
         });
@@ -91,10 +93,30 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.about) {
+
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onTodoClick(Task task) {
+        sharedViewModel.selectItem(task);
+        sharedViewModel.setIsEdit(true);
+        showBottomSheetDialog();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void onTodoRadioButtonClick(Task task) {
+        //TODO ASK USER FOR CONFIRMATION
+        TaskViewModel.delete(task);
+        recyclerViewAdapter.notifyDataSetChanged();
+    }
+
 }

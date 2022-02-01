@@ -8,11 +8,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/layout/activity_about.xml" value="0.25" />
-        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/layout/activity_main.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.16644951140065148" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.16644951140065148" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/drawable/ic_baseline_airline_seat_recline_extra_24.xml" value="0.16644951140065148" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/drawable/ic_baseline_arrow_circle_up_24.xml" value="0.16644951140065148" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.16644951140065148" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/drawable/ic_baseline_next_week_24.xml" value="0.16644951140065148" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/drawable/ic_baseline_note_add_24.xml" value="0.16644951140065148" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/drawable/ic_baseline_outlined_flag_24.xml" value="0.16644951140065148" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/drawable/ic_baseline_today_24.xml" value="0.16644951140065148" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/drawable/ic_baseline_wb_sunny_24.xml" value="0.16644951140065148" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/layout/activity_about.xml" value="0.2" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/layout/activity_splash_screen.xml" value="0.12" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/layout/bottom_sheet.xml" value="0.25" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.25" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/layout/todo_row.xml" value="0.25" />
+        <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/menu/menu_main.xml" value="0.25" />
         <entry key="..\:/Users/Braimah Abiola/Desktop/Projects/Todoister/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.26614583333333336" />
       </map>
     </option>

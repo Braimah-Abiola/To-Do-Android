@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.bhyte.todoister.Data.DoisterRepository;
+import com.bhyte.todoister.data.DoisterRepository;
 
 import java.util.List;
 
